@@ -2,6 +2,7 @@ package hello.jdbc.repository;
 
 import hello.jdbc.domain.Member;
 import java.sql.SQLException;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class MemberRepositoryV0Test {
@@ -10,8 +11,13 @@ class MemberRepositoryV0Test {
 
   @Test
   void crud() throws SQLException {
-    Member member = new Member("memberV0", 10000);
+    // save
+    Member member = new Member("memberV2", 10000);
     memberRepository.save(member);
+
+    // findById
+    Member findMember = memberRepository.findById(member.getMemberId());
+    Assertions.assertThat(member).isEqualTo(findMember);
   }
 
 }
