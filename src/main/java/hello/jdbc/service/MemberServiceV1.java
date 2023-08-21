@@ -4,9 +4,9 @@ import hello.jdbc.domain.Member;
 import hello.jdbc.repository.MemberRepositoryV1;
 import java.sql.SQLException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
+import lombok.extern.slf4j.Slf4j;
 
-@Service
+@Slf4j
 @RequiredArgsConstructor
 public class MemberServiceV1 {
 

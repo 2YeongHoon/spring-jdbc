@@ -7,13 +7,11 @@ import java.sql.SQLException;
 import javax.sql.DataSource;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
 
 /**
  * 트랜잭션 - 파라미터 연동, 풀 고려한 종료
  */
 @Slf4j
-@Service
 @RequiredArgsConstructor
 public class MemberServiceV2 {
 
