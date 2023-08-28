@@ -21,12 +21,11 @@ public class MemberServiceV2 {
   public void accountTransfer(String fromId, String toId, int money) throws SQLException {
     Connection con = dataSource.getConnection();
 
-    try
-    {
+    try {
       con.setAutoCommit(false);
       vizLogin(con, fromId, toId, money);
       con.commit();
-    }catch (Exception e) {
+    } catch (Exception e) {
       con.rollback();
       throw new IllegalStateException(e);
     } finally {
@@ -55,7 +54,7 @@ public class MemberServiceV2 {
   }
 
   private void validation(Member member) {
-    if(member.getMemberId().equals("ex")){
+    if (member.getMemberId().equals("ex")) {
       throw new IllegalStateException("이체중 예외 발생");
     }
   }

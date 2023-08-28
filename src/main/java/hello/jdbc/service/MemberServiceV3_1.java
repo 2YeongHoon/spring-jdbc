@@ -43,7 +43,7 @@ public class MemberServiceV3_1 {
   }
 
   private void validation(Member member) {
-    if(member.getMemberId().equals("ex")){
+    if (member.getMemberId().equals("ex")) {
       throw new IllegalStateException("이체중 예외 발생");
     }
   }

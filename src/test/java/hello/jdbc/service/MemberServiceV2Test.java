@@ -48,7 +48,7 @@ class MemberServiceV2Test {
   void accountTransfer() throws SQLException {
     // given
     Member memberA = new Member(MEMBER_A, 10000);
-    Member memberB = new Member(MEMBER_B , 10000);
+    Member memberB = new Member(MEMBER_B, 10000);
     memberRepository.save(memberA);
     memberRepository.save(memberB);
 
@@ -67,7 +67,7 @@ class MemberServiceV2Test {
   void accountTransferEx() throws SQLException {
     // given
     Member memberA = new Member(MEMBER_A, 10000);
-    Member memberEx = new Member(MEMBER_EX , 10000);
+    Member memberEx = new Member(MEMBER_EX, 10000);
     memberRepository.save(memberA);
     memberRepository.save(memberEx);
 

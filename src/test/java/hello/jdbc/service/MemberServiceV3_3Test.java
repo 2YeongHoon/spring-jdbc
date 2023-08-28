@@ -37,21 +37,25 @@ class MemberServiceV3_3Test {
 
   @TestConfiguration
   static class TestConfig {
+
     @Bean
     DataSource dataSource() {
       return new DriverManagerDataSource(
-        ConnectionConst.URL,
-        ConnectionConst.USERNAME,
-        ConnectionConst.PASSWORD);
+          ConnectionConst.URL,
+          ConnectionConst.USERNAME,
+          ConnectionConst.PASSWORD);
     }
+
     @Bean
     PlatformTransactionManager transactionManager() {
       return new DataSourceTransactionManager(dataSource());
     }
+
     @Bean
     MemberRepositoryV3 memberRepository() {
       return new MemberRepositoryV3(dataSource());
     }
+
     @Bean
     MemberServiceV3_3 memberService() {
       return new MemberServiceV3_3(memberRepository());
@@ -78,7 +82,7 @@ class MemberServiceV3_3Test {
   void accountTransfer() throws SQLException {
     // given
     Member memberA = new Member(MEMBER_A, 10000);
-    Member memberB = new Member(MEMBER_B , 10000);
+    Member memberB = new Member(MEMBER_B, 10000);
     memberRepository.save(memberA);
     memberRepository.save(memberB);
 
@@ -97,7 +101,7 @@ class MemberServiceV3_3Test {
   void accountTransferEx() throws SQLException {
     // given
     Member memberA = new Member(MEMBER_A, 10000);
-    Member memberEx = new Member(MEMBER_EX , 10000);
+    Member memberEx = new Member(MEMBER_EX, 10000);
     memberRepository.save(memberA);
     memberRepository.save(memberEx);
 
@@ -112,4 +116,5 @@ class MemberServiceV3_3Test {
     Assertions.assertThat(findMemberA.getMoney()).isEqualTo(10000);
     Assertions.assertThat(findMemberB.getMoney()).isEqualTo(10000);
   }
+
 }

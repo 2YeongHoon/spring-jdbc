@@ -38,10 +38,10 @@ public class MemberRepositoryV2 {
       pstmt.executeUpdate();
 
       return member;
-    }catch (SQLException e) {
+    } catch (SQLException e) {
       log.error("db error", e);
       throw e;
-    }finally {
+    } finally {
       close(con, pstmt, null);
     }
   }
@@ -57,10 +57,10 @@ public class MemberRepositoryV2 {
       pstmt = con.prepareStatement(sql);
       pstmt.setString(1, memberId);
       pstmt.executeUpdate();
-    }catch (SQLException e) {
+    } catch (SQLException e) {
       log.error("db error", e);
       throw e;
-    }finally {
+    } finally {
       close(con, pstmt, null);
     }
   }
@@ -77,10 +77,10 @@ public class MemberRepositoryV2 {
       pstmt.setInt(1, money);
       pstmt.setString(2, memberId);
       int resultSize = pstmt.executeUpdate();
-    }catch (SQLException e) {
+    } catch (SQLException e) {
       log.error("db error", e);
       throw e;
-    }finally {
+    } finally {
       close(con, pstmt, null);
     }
   }
@@ -95,10 +95,10 @@ public class MemberRepositoryV2 {
       pstmt.setInt(1, money);
       pstmt.setString(2, memberId);
       int resultSize = pstmt.executeUpdate();
-    }catch (SQLException e) {
+    } catch (SQLException e) {
       log.error("db error", e);
       throw e;
-    }finally {
+    } finally {
       JdbcUtils.closeStatement(pstmt);
     }
   }
@@ -110,26 +110,25 @@ public class MemberRepositoryV2 {
     PreparedStatement pstmt = null;
     ResultSet rs = null;
 
-    try
-    {
+    try {
       con = getConnection();
       pstmt = con.prepareStatement(sql);
       pstmt.setString(1, memberId);
       rs = pstmt.executeQuery();
 
-      if(rs.next()) {
+      if (rs.next()) {
         Member member = new Member();
         member.setMemberId(rs.getString("member_id"));
-        member.setMoney(rs.getInt("money") );
+        member.setMoney(rs.getInt("money"));
         return member;
-      } else{
+      } else {
         throw new NoSuchElementException("member not found memberId =" + memberId);
       }
 
-    }catch (SQLException e){
+    } catch (SQLException e) {
       log.error("db error", e);
       throw e;
-    }finally {
+    } finally {
       close(con, pstmt, rs);
     }
   }
@@ -140,25 +139,24 @@ public class MemberRepositoryV2 {
     PreparedStatement pstmt = null;
     ResultSet rs = null;
 
-    try
-    {
+    try {
       pstmt = con.prepareStatement(sql);
       pstmt.setString(1, memberId);
       rs = pstmt.executeQuery();
 
-      if(rs.next()) {
+      if (rs.next()) {
         Member member = new Member();
         member.setMemberId(rs.getString("member_id"));
-        member.setMoney(rs.getInt("money") );
+        member.setMoney(rs.getInt("money"));
         return member;
-      } else{
+      } else {
         throw new NoSuchElementException("member not found memberId =" + memberId);
       }
 
-    }catch (SQLException e){
+    } catch (SQLException e) {
       log.error("db error", e);
       throw e;
-    }finally {
+    } finally {
       JdbcUtils.closeResultSet(rs);
     }
 
